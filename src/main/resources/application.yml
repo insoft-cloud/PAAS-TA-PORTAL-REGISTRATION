@@ -2,51 +2,46 @@
 spring:
   application:
     name: PortalRegistration  # Identify this application
+  boot:
+    #Spring boot admin settings
+    admin:
+      routes:
+        endpoints: env,metrics,trace,info,trace,heapdump,hystrix.stream,docs
+        #Timeintervalin ms to update the status of App
+      monitor:
+        perio: 10000
+        #LifeTime of App status in ms.
+        status-lifetime: 10000
+        #Connection Timeout in ms when App's status and info
+        connect-timeout: 2000
+        #Read Timeout in ms when App's status and info
+        read-timeout: 5000
+      metadata-keys-to-sanitize: .password$,.*secret$,.*key$,.$token$,.credentials.,.*vcap_services$
+      metadata:
+        user:
+          name: ${security.user.name}
+          password: ${security.user.password}
+  main:
+    allow-bean-definition-overriding: true
 
-#Spring config setting (current version not used)
-#  boot:
-#    #Spring boot admin settings
-#    admin:
-#      routes:
-#        endpoints: env,metrics,trace,info,trace,heapdump,hystrix.stream,docs
-#        #Timeintervalin ms to update the status of App
-#      monitor:
-#        perio: 10000
-#        #LifeTime of App status in ms.
-#        status-lifetime: 10000
-#        #Connection Timeout in ms when App's status and info
-#        connect-timeout: 2000
-#        #Read Timeout in ms when App's status and info
-#        read-timeout: 5000
-#      metadata-keys-to-sanitize: .password$,.*secret$,.*key$,.$token$,.credentials.,.*vcap_services$
-#      metadata:
-#        user:
-#          name: ${security.user.name}
-#          password: ${security.user.password}
+##INFRA_ADMIN Settings
+project:
+  name: paasta-registration
+  artifactId: paasta-registration
+  description: paasta eureka service
+info:
+  app:
+    encoding: Encoding - UTF-8
+  java:
+    source: Source - java ver
+    target: Instance1 - Java ver
+  spring:
+    profiles: ${spring.profiles.active:default}
+  build:
+    name: ${project.name}
+    artifact: ${project.artifactId}
+    description: ${project.description}
 
-#Infra Admin Settings (current version not used)
-#project:
-#  name: paasta-registration
-#  artifactId: paasta-registration
-#  description: paasta eureka service
-#info:
-#  app:
-#    encoding: Encoding - UTF-8
-#  java:
-#    source: Source - java ver
-#    target: Instance1 - Java ver
-#  spring:
-#    profiles: ${spring.profiles.active:default}
-#  build:
-#    name: ${project.name}
-#    artifact: ${project.artifactId}
-#    description: ${project.description}
-
-management:     # If you set off security...
-  security:
-    enabled: false
-
-# Configure this Discovery Server
 eureka:
   server:
     enableSelfPreservation: true
@@ -62,6 +57,12 @@ eureka:
     healthcheck:
       enabled: true
 
-
 server:
   port: ${PORT:2221}   # HTTP (Tomcat) port
+
+logging:
+  level:
+    ROOT: INFO
+  file:
+    path: classpath:logback-spring.xml
+    name: logs/application.log
