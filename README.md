@@ -8,7 +8,8 @@ Spring-cloud 프로젝트의 Service discovery server로 Eureka 를 사용한 �
 ## 유의사항
 
 개발 정보
-- gradle 2.14 버전
-- java 1.8 버전
-
-
+- gradle 5.6.2
+- java version "1.8.0_241"
+- springBootVersion = '2.4.2'
+- springCloudVersion = '2020.0.0'
+- springBootAdminVersion = '2.2.2'
