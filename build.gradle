@@ -23,7 +23,7 @@ apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
 
 jar {
-    baseName = 'paas-ta-portal-registration'
+    archivesBaseName = 'paas-ta-portal-registration'
 }
 
 sourceCompatibility = 1.8
