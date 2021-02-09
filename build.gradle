@@ -36,7 +36,7 @@ repositories {
 dependencies {
     //Eureka
     compile('org.springframework.cloud:spring-cloud-starter-netflix-eureka-server')
-    compile ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
+    //compile ('org.springframework.cloud:spring-cloud-starter-netflix-eureka-client')
 
     //admin
     compile ("de.codecentric:spring-boot-admin-starter-client:${springBootAdminVersion}")
