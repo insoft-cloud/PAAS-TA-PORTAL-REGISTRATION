@@ -13,6 +13,7 @@ buildscript {
 ext {
     springCloudVersion = '2020.0.0'
     springBootAdminVersion = '2.2.2'
+    jacocoVersion = '0.8.1'
 }
 
 apply plugin: 'java'
@@ -49,7 +50,7 @@ dependencyManagement {
 }
 
 jacoco {
-    toolVersion = "0.7.9+"
+    toolVersion = "${jacocoVersion}"
 }
 
 test {
