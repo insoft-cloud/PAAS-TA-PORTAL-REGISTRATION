@@ -16,6 +16,7 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
  * EnableDiscoveryClient
  * EurekaClient 를 등록한다.
  */
+
 @SpringBootApplication
 @EnableEurekaServer
 @EnableDiscoveryClient
